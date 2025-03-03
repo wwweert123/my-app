@@ -11,9 +11,6 @@ import {
 import { useState } from "react";
 import axios from "axios";
 
-const API_ENDPOINT =
-    "https://ec2-13-215-183-220.ap-southeast-1.compute.amazonaws.com/v1/chat/completions";
-
 function App() {
     const [prompt, setPrompt] = useState("");
     const [rule, setRule] = useState("");
@@ -23,7 +20,7 @@ function App() {
     const handleSubmit = async () => {
         try {
             const response = await axios.post(
-                API_ENDPOINT,
+                import.meta.env.VITE_API_ENDPOINT,
                 {
                     prompt: prompt, // Replace or pass dynamically
                     phase: phase,
@@ -74,7 +71,7 @@ function App() {
                     onChange={(e) => setPrompt(e.target.value)}
                 />
                 <Button variant="contained" onClick={handleSubmit}>
-                    Hello
+                    Submit
                 </Button>
             </Stack>
 
